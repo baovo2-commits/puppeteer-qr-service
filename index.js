@@ -21,8 +21,8 @@ app.get("/get-qr", async (req, res) => {
     const page = await browser.newPage();
     const url = `https://thanhtoan.ndc.gov.vn/payment?sessionId=${sessionId}`;
 
-    await page.goto(url, { waitUntil: "networkidle2" });
-    await page.waitForSelector("canvas", { timeout: 10000 });
+    await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
+    await page.waitForSelector("canvas", { timeout: 30000 });
 
     const qr = await page.evaluate(() => {
       const canvas = document.querySelector("canvas");
